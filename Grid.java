@@ -1,35 +1,35 @@
 package battleship;
 
-class Grid {
-    private char[][] grid = {
-        {'~', '~', '~', '~', '~', '~', '~', '~', '~', '~'},
-        {'~', '~', '~', '~', '~', '~', '~', '~', '~', '~'},
-        {'~', '~', '~', '~', '~', '~', '~', '~', '~', '~'},
-        {'~', '~', '~', '~', '~', '~', '~', '~', '~', '~'},
-        {'~', '~', '~', '~', '~', '~', '~', '~', '~', '~'},
-        {'~', '~', '~', '~', '~', '~', '~', '~', '~', '~'},
-        {'~', '~', '~', '~', '~', '~', '~', '~', '~', '~'},
-        {'~', '~', '~', '~', '~', '~', '~', '~', '~', '~'},
-        {'~', '~', '~', '~', '~', '~', '~', '~', '~', '~'},
-        {'~', '~', '~', '~', '~', '~', '~', '~', '~', '~'}
+public class Grid {
+    private final char[][] grid = {
+            {'~', '~', '~', '~', '~', '~', '~', '~', '~', '~'},
+            {'~', '~', '~', '~', '~', '~', '~', '~', '~', '~'},
+            {'~', '~', '~', '~', '~', '~', '~', '~', '~', '~'},
+            {'~', '~', '~', '~', '~', '~', '~', '~', '~', '~'},
+            {'~', '~', '~', '~', '~', '~', '~', '~', '~', '~'},
+            {'~', '~', '~', '~', '~', '~', '~', '~', '~', '~'},
+            {'~', '~', '~', '~', '~', '~', '~', '~', '~', '~'},
+            {'~', '~', '~', '~', '~', '~', '~', '~', '~', '~'},
+            {'~', '~', '~', '~', '~', '~', '~', '~', '~', '~'},
+            {'~', '~', '~', '~', '~', '~', '~', '~', '~', '~'}
     };
 
-    public void setValue(String reference, char value) {
+    void setValue(String reference, char value) {
         Coordinates coordinates = new Coordinates(reference);
         int y = coordinates.getY();
         int x = coordinates.getX();
         this.setValue(y, x, value);
     }
 
-    public void setValue(int y, int x, char value) {
+    void setValue(int y, int x, char value) {
         this.grid[y][x] = value;
     }
 
-    public char getValue(int y, int x) {
+    char getValue(int y, int x) {
         return this.grid[y][x];
     }
 
-    public boolean isAvailable(String reference) {
+    boolean isAvailable(String reference) {
         Coordinates coordinates = new Coordinates(reference);
         int y = coordinates.getY();
         int x = coordinates.getX();
@@ -51,7 +51,7 @@ class Grid {
         return true;
     }
 
-    public boolean placeShip(String[] references) {
+    boolean placeShip(String[] references) {
         for (String reference : references){
             if(!isAvailable(reference)){
                 return false;
@@ -63,7 +63,10 @@ class Grid {
         return true;
     }
 
-    public int shot(String reference) {
+    int shot(String reference) {
+        if(reference.isEmpty()){
+            return -1;
+        }
         Coordinates coordinates = new Coordinates(reference);
         if(!coordinates.isValide()){
             return -1;
@@ -84,7 +87,7 @@ class Grid {
         return -1;
     }
 
-    public void print(boolean fog) {
+    void print(boolean fog) {
         System.out.println("  1 2 3 4 5 6 7 8 9 10");
         for(int i=0; i<10; i++){
             char letter = (char)(65+i);

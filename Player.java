@@ -1,44 +1,44 @@
 package battleship;
 
-class Player {
-    private String name;
-    private Ship[] ships;
-    private Grid grid;
+public class Player {
+    private final String name;
+    private final Ship[] ships;
+    private final Grid grid;
     private boolean lose = false;
 
     Player(int i) {
         this.name = "Player " + i;
         this.grid = new Grid();
         this.ships = new Ship[]{
-            new Aircraft(),
-            new Battleship(),
-            new Submarine(),
-            new Cruiser(),
-            new Destroyer()
+                new Aircraft(),
+                new Battleship(),
+                new Submarine(),
+                new Cruiser(),
+                new Destroyer()
         };
     }
 
-    public Ship getShip(int i) {
+    Ship getShip(int i) {
         return this.ships[i];
     }
 
-    public Grid getGrid() {
+    Grid getGrid() {
         return this.grid;
     }
 
-    public String getName() {
+    String getName() {
         return this.name;
     }
 
-    public boolean hasLosed() {
+    boolean hasLosed() {
         return this.lose;
     }
 
-    public void printGrid(boolean fog) {
+    void printGrid(boolean fog) {
         this.grid.print(fog);
     }
 
-    public boolean shot(String reference) {
+    boolean shot(String reference) {
         int result = this.grid.shot(reference);
         switch(result) {
             case -1:
@@ -66,7 +66,7 @@ class Player {
         }
     }
 
-    public boolean refreshShips(String reference){
+    boolean refreshShips(String reference){
         boolean allDead = true;
         boolean alive = true;
         for(Ship ship : this.ships){

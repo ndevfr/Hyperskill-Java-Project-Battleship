@@ -22,15 +22,15 @@ public class Coordinates {
         }
     }
 
-    public boolean isValide() {
+    boolean isValide() {
         return this.valide;
     }
 
-    public int getX() {
+    int getX() {
         return this.x;
     }
 
-    public int getY(){
+    int getY(){
         return this.y;
     }
 }

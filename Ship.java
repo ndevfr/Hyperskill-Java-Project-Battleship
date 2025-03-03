@@ -1,13 +1,13 @@
 package battleship;
 
-class Ship {
-    private String name;
+public class Ship {
+    private final String name;
     private String[] parts;
-    private int length;
+    private final int length;
     private int touched;
     private boolean alive;
 
-    public Ship(String name, int length){
+    Ship(String name, int length){
         this.name = name;
         this.parts = new String[length];
         this.length = length;
@@ -15,30 +15,30 @@ class Ship {
         this.alive = true;
     }
 
-    public String getName(){
+    String getName(){
         return this.name;
     }
 
-    public void setParts(String[] parts){
+    void setParts(String[] parts){
         this.parts = parts;
     }
 
-    public int getLength(){
+    int getLength(){
         return this.length;
     }
 
-    public boolean getAlive(){
+    boolean getAlive(){
         return this.alive;
     }
 
-    public void incTouched() {
+    void incTouched() {
         this.touched++;
         if(this.touched == this.length){
             this.alive = false;
         }
     }
 
-    public boolean includes(String reference){
+    boolean includes(String reference){
         for (String part : this.parts) {
             if (part.equals(reference)) {
                 return true;

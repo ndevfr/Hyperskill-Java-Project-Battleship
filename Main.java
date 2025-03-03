@@ -14,7 +14,7 @@ public class Main {
         System.out.println("Press Enter and pass the move to another player");
         scanner.nextLine();
         initPlayer(player2, scanner);
-        int i = 1;
+        int i = 0;
 
         while(true){
             nextPlayer(scanner);
@@ -26,7 +26,7 @@ public class Main {
             boolean goodShot = false;
             while(!goodShot){
                 String reference = scanner.nextLine();
-                goodShot = player.shot(reference);
+                goodShot = opponent.shot(reference);
             }
 
             if(opponent.hasLosed()){
@@ -39,9 +39,9 @@ public class Main {
     }
 
     public static void dualGrids(Player player1, Player player2) {
-        player1.printGrid(true);
+        player2.printGrid(true);
         System.out.println("---------------------");
-        player2.printGrid(false);
+        player1.printGrid(false);
     }
 
     public static void nextPlayer(Scanner scanner) {
